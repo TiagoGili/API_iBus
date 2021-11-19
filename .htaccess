@@ -1,0 +1,21 @@
+RewriteEngine On
+
+Header add Access-Control-Allow-Origin "*"
+Header add Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
+Header add Access-Control-Allow-Headers: "Origin, Content-Type, Accept, Authorization, X-Request-With"
+Header add Access-Control-Allow-Credentials: "true"
+
+RewriteRule ^tb_usuario/insert?$       tb_usuario/insert.php [NC,L]
+RewriteRule ^tb_usuario/([0-9-]+)/?$   tb_usuario/select.php?codigo=$1 [NC,L]
+RewriteRule ^tb_usuario/update/?$      tb_usuario/update.php [NC,L]
+
+
+
+
+
+RewriteRule ^contar?$   contar.php [NC,L]
+RewriteRule ^produto/?$   produto/listar.php [NC,L]
+RewriteRule ^produto/inserir/?$     produto/inserir.php [NC,L]
+RewriteRule ^produto/([0-9-]+)/?$     produto/consultar.php?codigo=$1 [NC,L]
+RewriteRule ^produto/alterar/?$     produto/alterar.php [NC,L]
+RewriteRule ^produto/deletar/([0-9-]+)/?$     produto/delete.php?codigo=$1 [NC,L]
