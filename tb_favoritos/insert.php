@@ -5,16 +5,12 @@
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
         
-        $nome_usuario = $request->nome_usuario;
-        $email_usuario = $request->email_usuario;
-        $senha_usuario = $request->senha_usuario;
-        $desc_usuario = $request->desc_usuario;
-        $dtNasc_usuario = $request->dtNasc_usuario;
-        $status_usuario = $request->status_usuario;
-    
+        $fk_usuario_favoritos = $request->$fk_usuario_favoritos;
+        $$fk_linha_favoritos = $request->$fk_linha_favoritos;
+        
         $sql = "
             insert into 
-                tb_usuario 
+                tb_favoritos 
                 (
                     nome_usuario, 
                     email_usuario, 

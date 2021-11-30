@@ -6,15 +6,10 @@
 
     $sql = "
         select 
-            nome_usuario as nome, 
-            email_usuario as email, 
-            senha_usuario as senha, 
-            desc_usuario as desc, 
-            dtNasc_usuario as dtNasc,
-            status_usuario as status, 
-            localizacao_usuario as localizacao
+            fk_usuario_favoritos
+            fk_linha_favoritos
         from 
-            tb_usuario 
+            tb_favoritos 
         where 
             id_usuario = " . $codigo;
 

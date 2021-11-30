@@ -2,21 +2,16 @@
     
     require("../conexao.php");
 
-    $codigo = $_GET["id_usuario"];
+    $codigo = $_GET["id_horarios"];
 
     $sql = "
         select 
-            nome_usuario as nome, 
-            email_usuario as email, 
-            senha_usuario as senha, 
-            desc_usuario as desc, 
-            dtNasc_usuario as dtNasc,
-            status_usuario as status, 
-            localizacao_usuario as localizacao
+            horarios as horarios, 
+            dia_horarios as dia
         from 
-            tb_usuario 
+            tb_ponto
         where 
-            id_usuario = " . $codigo;
+            id_horarios = " . $codigo;
 
     $result = mysqli_query($conexao, $sql);
 
