@@ -2,6 +2,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
+        require("../conexao.php");
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
         
@@ -10,7 +11,6 @@
         $senha_usuario = $request->senha_usuario;
         $desc_usuario = $request->desc_usuario;
         $dtNasc_usuario = $request->dtNasc_usuario;
-        $status_usuario = $request->status_usuario;
     
         $sql = "
             insert into 
@@ -20,25 +20,26 @@
                     email_usuario, 
                     senha_usuario, 
                     desc_usuario, 
-                    dtNasc_usuario, 
-                    status_usuario, 
+                    dtNasc_usuario,
+                    config_usuario,
                     localizacao_usuario
                 ) 
-                values 
+                value
                 (
                     '$nome_usuario', 
                     '$email_usuario', 
                     '$senha_usuario', 
                     '$desc_usuario', 
-                    '$dtNasc_usuario', 
-                    '$status_usuario'
+                    '$dtNasc_usuario',
+                    'configurado',
+                    'aaaa'
                 )";
 
         $status = mysqli_query($conexao, $sql);
         
         if ($status) {
             http_response_code(201);
-            $data = ["mensagem" => "$desc inserido com sucesso", "id" => $conexao->insert_id];
+            $data = ["mensagem" => "Inserido com sucesso"];
             echo json_encode($data);
         } else {
             header("HTTP/1.1 500 Erro no SQL");
